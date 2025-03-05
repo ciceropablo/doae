@@ -1,0 +1,17 @@
+version: "3.9"
+
+services:
+  postgres:
+    container_name: doae_db_test
+    environment:
+      POSTGRES_USER: doae_test
+      POSTGRES_PASSWORD: doae123_test
+      POSTGRES_DB: doae_test
+    volumes:
+      - ./volumes/postgres_test:/var/lib/postgresql/data
+
+  backend:
+    container_name: doae_backend_test
+    environment:
+      DATABASE_URL: postgresql://doae_test:doae123_test@postgres:5432/doae_test
+      NODE_ENV: test

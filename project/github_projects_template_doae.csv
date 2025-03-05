@@ -1,0 +1,15 @@
+Title,Body,Status,Labels
+Configurar monorepo,Criar estrutura inicial com backend e frontend juntos,Backlog,Infra
+Criar entidade Usuario,"Definir tabela no Prisma, campos e tipos",Backlog,"Backend,Auth"
+Criar rota de cadastro,POST /usuarios,Backlog,"Backend,Auth"
+Criar rota de login,POST /login,Backlog,"Backend,Auth"
+Criar tela de cadastro,Formulário de cadastro de usuários,Backlog,"Frontend,Auth"
+Criar tela de login,Formulário de login de usuários,Backlog,"Frontend,Auth"
+Criar CRUD de campanhas,"Rota para admin criar, editar, encerrar campanhas",Backlog,"Backend,Admin"
+Criar tela de gerenciamento de campanhas,Tela no painel admin,Backlog,"Frontend,Admin"
+Criar listagem pública de campanhas,Página pública com campanhas ativas,Backlog,Frontend
+Criar página de detalhes da campanha,"Exibe meta, progresso e descrição",Backlog,Frontend
+Criar fluxo de doação,Tela e fluxo de simulação de pagamento via PIX,Backlog,"Frontend,Doações"
+Criar rota de doação,POST /doacoes,Backlog,"Backend,Doações"
+Criar histórico de doações,Tela 'Minhas doações' no perfil do usuário,Backlog,Frontend
+Configurar podman-compose,"Subir backend, frontend e postgres",Backlog,Infra
