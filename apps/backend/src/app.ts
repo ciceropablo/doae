@@ -5,9 +5,9 @@ import { healthRoutes } from "./routes/health.routes";
 import { authRoutes } from "./routes/auth.routes";
 import { swaggerPlugin } from "./plugins/swagger";
 import { errorHandlerPlugin } from "./plugins/error-handler";
-import { mockAuthPlugin } from "./plugins/mock-auth";
 import { corsPlugin } from "./plugins/cors";
 import { config } from "./config";
+import { authPlugin } from "./plugins/auth.plugin";
 
 export async function buildApp() {
   const app = Fastify({
@@ -22,10 +22,9 @@ export async function buildApp() {
     },
   });
 
-  // Aqui você vai registrar plugins, rotas etc.
   await swaggerPlugin(app);
   await corsPlugin(app);
-  await mockAuthPlugin(app);
+  await authPlugin(app);
   await errorHandlerPlugin(app);
   registerRoutes(app);
 
@@ -35,6 +34,8 @@ export async function buildApp() {
 export async function registerRoutes(app: FastifyInstance) {
   app.register(authRoutes, { prefix: "/api/v1/auth" });
   app.register(campaignRoutes, { prefix: "/api/v1/campaigns" });
-  app.register(donationRoutes, { prefix: "/api/v1/campaigns/:campaignId" });
+  app.register(donationRoutes, {
+    prefix: "/api/v1/campaigns/:campaignId",
+  });
   app.register(healthRoutes, { prefix: "/api/v1" });
 }

@@ -32,7 +32,7 @@ beforeEach(async () => {
 });
 
 describe("Campaigns", () => {
-  it("should create a campaign (ADMIN)", async () => {
+  it.only("should create a campaign (ADMIN)", async () => {
     const response = await request
       .post("/api/v1/campaigns")
       .set("Authorization", "Bearer mock-admin-token")

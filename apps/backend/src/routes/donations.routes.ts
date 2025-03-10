@@ -4,10 +4,9 @@ import { donationSchemas } from "../docs/donations.docs";
 import { requireUser } from "../plugins/authorization";
 
 export async function donationRoutes(app: FastifyInstance) {
-  // criar doação (mock auth como user)
   app.post("/donations", {
     schema: donationSchemas.createDonation,
-    preHandler: [requireUser],
+    preHandler: [app.authenticate, requireUser],
     handler: createDonationHandler,
   });
 }

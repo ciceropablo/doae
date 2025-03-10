@@ -2,7 +2,7 @@ import { FastifyInstance, FastifyRequest, FastifyReply } from "fastify";
 
 type User = {
   id: string;
-  email: string;
+
   role: "ADMIN" | "USER";
 };
 
@@ -10,12 +10,12 @@ type User = {
 const MOCK_TOKENS: Record<string, User> = {
   "mock-admin-token": {
     id: "mock-admin-id",
-    email: "admin@doae.com",
+    // email: "admin@doae.com",
     role: "ADMIN",
   },
   "mock-user-token": {
     id: "mock-user-id",
-    email: "user@doae.com",
+    // email: "user@doae.com",
     role: "USER",
   },
 };

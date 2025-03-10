@@ -19,6 +19,7 @@ export async function createDonationHandler(
 
     return reply.status(201).send(donation);
   } catch (error) {
+    // TODO: analisar o erro e retornar a resposta adequada
     return reply.status(404).send({ message: "Campaign not found" });
   }
 }

@@ -50,13 +50,14 @@ services:
       context: ../apps/frontend
       dockerfile: Dockerfile
     container_name: doae_frontend
+    depends_on:
+      - backend
     ports:
       - "3000:3000"
     networks:
       - doae_network
     volumes:
       - ../apps/frontend:/app
-      - /app/node_modules
     stdin_open: true
     tty: true
 

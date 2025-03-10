@@ -1,7 +1,26 @@
 import { FastifyReply, FastifyRequest } from "fastify";
-import { LoginInput } from "../schemas/auth.schema";
+import { LoginInput, RegisterInput } from "../schemas/auth.schema";
+import { register, login } from "../services/auth.service";
+
+export async function registerHandler(
+  request: FastifyRequest<{ Body: RegisterInput }>,
+  reply: FastifyReply
+) {
+  const { name, email, password } = request.body;
+  const res = await register(name, email, password);
+  return reply.status(201).send(res);
+}
 
 export async function loginHandler(
+  request: FastifyRequest<{ Body: LoginInput }>,
+  reply: FastifyReply
+) {
+  const { email, password } = request.body;
+  const res = await login(email, password);
+  return reply.send(res);
+}
+
+export async function _loginHandler(
   request: FastifyRequest<{ Body: LoginInput }>,
   reply: FastifyReply
 ) {

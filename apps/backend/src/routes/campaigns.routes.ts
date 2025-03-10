@@ -15,7 +15,7 @@ export async function campaignRoutes(app: FastifyInstance) {
   // criar campanha (mock auth como admin)
   app.post("/", {
     schema: campaignSchemas.createCampaign,
-    preHandler: requireAdmin,
+    preHandler: [app.authenticate, requireAdmin],
     handler: createCampaignHandler,
   });
 
@@ -34,14 +34,14 @@ export async function campaignRoutes(app: FastifyInstance) {
   // atualizar campanha (mock auth como admin)
   app.put("/:id", {
     schema: campaignSchemas.updateCampaign,
-    preHandler: requireAdmin,
+    preHandler: [app.authenticate, requireAdmin],
     handler: updateCampaignHandler,
   });
 
   // fechar campanha (mock auth como admin)
   app.post("/:id/close", {
     schema: campaignSchemas.closeCampaign,
-    preHandler: requireAdmin,
+    preHandler: [app.authenticate, requireAdmin],
     handler: closeCampaignHandler,
   });
 
@@ -54,7 +54,7 @@ export async function campaignRoutes(app: FastifyInstance) {
   // listar doações da campanha
   app.get("/:id/donations", {
     schema: campaignSchemas.listCampaignDonations,
-    preHandler: requireAdmin,
+    preHandler: [app.authenticate, requireAdmin],
     handler: listCampaignDonationsHandler,
   });
 }
